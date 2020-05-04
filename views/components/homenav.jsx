@@ -24,7 +24,7 @@ class Nav2 extends React.Component {
 
 
     <ul class="nav navbar-nav navbar-right">
-      <li><a style={{color:'#dedee4'}} href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a style={{color:'#dedee4'}} href=""><span class="glyphicon glyphicon-search"></span> Search</a></li>
       <li><a style={{color:'#dedee4'}} href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
     </ul>
   </div>
