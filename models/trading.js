@@ -7,21 +7,39 @@ module.exports = (dbPoolInstance) => {
 
   // `dbPoolInstance` is accessible within this function scope
 
-  // //log in
-  // let userCheck = (requestUser, call) => {
-  //   let query = "SELECT * from users where name="+"'"+requestUser+"'" ;
-  //   dbPoolInstance.query(query, (error, queryResult) => {
-  //     if ( error ) {
-  //       call(error, null);
-  //     } else {
-  //       if( queryResult.rows.length > 0 ){
-  //           call(null, queryResult.rows);
-  //       }else{
-  //           call(null, null);
-  //       };
-  //     };
-  //   });
-  // };
+//*******************************************************   USER CODES   *******************************************************************************************************
+  //log in
+  let userCheck = (inputUsername, inputPassword, callback) => {
+
+    let query = "SELECT * FROM users WHERE username=" + "'" + inputUsername + "'" + "AND password=" + "'" + inputPassword + "';";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if ( error ) {
+        callback(error, null);
+      } else {
+        if( queryResult.rows.length > 0 ){
+            callback(null, queryResult.rows);
+        }else{
+            callback(null, null);
+        };
+      };
+    });
+  };
+
+  let addUser = (userInput, passwordInput, callback) => {
+
+
+        let query = `INSERT INTO users(username, password) VALUES ($1, $2) RETURNING *`
+
+        let values = [userInput, passwordInput];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+            callback(error, result.rows[0]);
+        })
+    };
+
+
+//******************************************************* Trading CODES ********************************************************************************************************
 
 //show all past trades
   let alltradesCallback = (callback) => {
@@ -43,12 +61,22 @@ module.exports = (dbPoolInstance) => {
       });
     };
 
-    //view one trade
+    //SHOW one trade
   let showtradeCallback = (tradeId, callback) => {
 
     let query = "SELECT * FROM trades WHERE id=" + tradeId + ";";
 
-    dbPoolInstance.query(query, values, (error, queryResult) => {
+    dbPoolInstance.query(query, (error, queryResult) => {
+      callback(error, queryResult.rows[0]);
+      });
+    };
+
+        //DELETE one trade
+  let deletetradeCallback = (tradeId, callback) => {
+
+    let query = "DELETE FROM trades WHERE id=" + tradeId + ";";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
       callback(error, queryResult.rows[0]);
       });
     };
@@ -77,10 +105,12 @@ module.exports = (dbPoolInstance) => {
 
 
   return {
-    // userCheck,
+    userCheck,
     alltradesCallback,
     createtradeCallback,
     showtradeCallback,
     edittradeCallback,
+    deletetradeCallback,
+    addUser,
   };
 };

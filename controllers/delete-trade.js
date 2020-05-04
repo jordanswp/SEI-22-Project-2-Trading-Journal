@@ -6,25 +6,17 @@ module.exports = (db) => {
    * ===========================================
    */
 
+       let deleteTradeControllerCallback = (request, response) => {
 
-   let allTradescontroller = (request, response) => {
-    let user_name = request.cookies['user_name'];
+        let tradeId = request.params.id;
 
-    if (request.cookies['user_name'] !== undefined){
-
-        db.trading.alltradesCallback((error, result) => {
-
+        db.trading.deletetradeCallback(tradeId,(error, result) => {
         if(result === null) {
             response.send("failed");
-
         } else {
-                response.render('all-trades', {result});
-        };
+             response.redirect('/trades');
+            }
       });
-    } else {
-            response.status(403);
-            response.redirect('/login');
-        };
     };
 
 
@@ -34,7 +26,7 @@ module.exports = (db) => {
    * ===========================================
    */
   return {
-    allTradescontroller,
+    deleteTradeControllerCallback,
   };
 
-};
+}

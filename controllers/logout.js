@@ -7,23 +7,13 @@ module.exports = (db) => {
    */
 
 
-   let allTradescontroller = (request, response) => {
+   let logOutcontroller = (request, response) => {
     let user_name = request.cookies['user_name'];
 
     if (request.cookies['user_name'] !== undefined){
 
-        db.trading.alltradesCallback((error, result) => {
-
-        if(result === null) {
-            response.send("failed");
-
-        } else {
-                response.render('all-trades', {result});
-        };
-      });
-    } else {
-            response.status(403);
-            response.redirect('/login');
+        response.clearCookie('user_name');
+        response.redirect('/login');
         };
     };
 
@@ -34,7 +24,7 @@ module.exports = (db) => {
    * ===========================================
    */
   return {
-    allTradescontroller,
+    logOutcontroller,
   };
 
 };

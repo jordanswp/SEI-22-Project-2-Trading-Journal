@@ -7,13 +7,20 @@ module.exports = (db) => {
    */
 
 
-  let newTradeFormController = (request, response) => {
-        // let userId = request.cookies.user_id;
-        // let data = {
-        //      cookieUserId : userId
-        // }
-        // response.render('newtweed', data);
+  // let newTradeFormController = (request, response) => {
+
+  //       response.render('newtrade',);
+  // };
+
+    let newTradeFormController = (request, response) => {
+
+        let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] !== undefined) {
         response.render('newtrade',);
+    } else {
+            response.render('login');
+        };
   };
 
   let newTradePost = (request, response) => {

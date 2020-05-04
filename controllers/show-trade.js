@@ -9,14 +9,18 @@ module.exports = (db) => {
 
    let showTradecontroller = (request, response) => {
 
-        let tradeId = request.params.id;
+        let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] === undefined) {
+            response.redirect('/login');
+        }else { let tradeId = request.params.id;
 
         db.trading.showtradeCallback(tradeId,(error, result) => {
         if(result === null) {
             response.send("failed");
         } else {
-            // console.log(result.pair);
                 const data = {
+                    tradeId : request.params.id,
                     pair : result.pair,
                     date : result.date_traded,
                     trend : result.trend_direction,
@@ -29,11 +33,12 @@ module.exports = (db) => {
                     pl : result.profit_or_loss,
                     comments : result.comments
                 }
+                // console.log("========================================"+tradeId+"===============================================================");
                 response.render('show-trade', data);
         };
       });
     };
-
+};
   /**
    * ===========================================
    * Export controller functions as a module

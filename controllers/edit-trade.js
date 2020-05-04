@@ -7,13 +7,19 @@ module.exports = (db) => {
    */
 
   let showEditForm = (request, response) => {
+
+        let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] === undefined) {
+            response.redirect('/login');
+        } else {
         const data = {
         id : request.params.id
     }
     response.render('edit-trade',data);
 
-  }
-
+  };
+};
   let editTradeController = (request, response) => {
 
         let tradeId = request.params.id;

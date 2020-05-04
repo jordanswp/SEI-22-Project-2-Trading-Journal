@@ -7,25 +7,59 @@ module.exports = (db) => {
    */
 
 
+  // let loginCallback = (request, response) => {
+  //       response.render('login');
+  // };
+
   let loginCallback = (request, response) => {
-        response.render('login');
-  };
+        let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] !== undefined){
+            response.redirect('/trades');
+
+       } else {
+            response.render('login');
+        };
+    };
+
+  // let getRegisterForm = (request, response) => {
+  //       response.render('register');
+  //   };
+
+  let getRegisterForm = (request, response) => {
+        let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] !== undefined){
+            response.redirect('/trades');
+
+       } else {
+            response.render('register');
+        };
+    };
+
+  let addUserControllerCallback = (request, response) => {
+
+        let userInput = request.body.username;
+        let passwordInput = request.body.password;
+        db.trading.addUser(userInput, passwordInput,(error, result) => {
+            response.redirect('/trades')
+        });
+    };
 
   let loginCheck = (request, response) => {
-        let inputName = request.body.name;
-        let inputPassword = (request.body.password);
+        let inputUsername = request.body.username;
+        let inputPassword = request.body.password;
 
-        db.tweedr.userCheck(inputName, (error, result) => {
+        db.trading.userCheck(inputUsername, inputPassword, (error, result) => {
         if(result === null) {
-            response.send("failed")
-            // response.render('tweed/login', { login: "failed"});
+            response.send("login failed, please try again");
         } else {
-            if (result[0].password === inputPassword) {
-                let user_id = result[0].id;
-                let userLog = user_id;
-                response.cookie('user_id', user_id);
-                response.cookie('logged in', userLog);
-                response.render('/');
+            if (result[0].password === inputPassword && result[0].username === inputUsername) {
+                let user_name = result[0].username;
+                // let userLog = user_name;
+                response.cookie('user_name', user_name);
+                // response.cookie('logged in', userLog);
+                response.redirect('/trades');
             } else {
                 response.send("login failed, please try again");
             };
@@ -41,6 +75,8 @@ module.exports = (db) => {
   return {
     loginCallback,
     loginCheck,
+    getRegisterForm,
+    addUserControllerCallback,
   };
 
 }
