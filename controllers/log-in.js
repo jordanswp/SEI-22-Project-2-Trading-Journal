@@ -59,7 +59,7 @@ module.exports = (db) => {
                 // let userLog = user_name;
                 response.cookie('user_name', user_name);
                 // response.cookie('logged in', userLog);
-                response.redirect('/trades');
+                response.redirect('/');
             } else {
                 response.send("login failed, please try again");
             };

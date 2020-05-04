@@ -1,7 +1,7 @@
 var React = require("react");
 
 import Head from "./components/header";
-import Nav2 from "./components/homenav";
+import Nav3 from "./components/homelogoutnav";
 import Footer2 from "./components/homefooter";
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
       <html>
       <Head />
         <body style={{backgroundImage:`url('/assets/bg9.jpg')`, backgroundRepeat:'no-repeat', backgroundSize:'cover' }}>
-        <Nav2 />
+        <Nav3 />
         <div style={{background:'transparent'}}>
                       <h1 style={{color:'white', fontFamily:'Futura', textShadow:'1px 1px grey', textAlign:'center'}}>MidasFX™</h1>
         </div>

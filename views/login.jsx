@@ -2,7 +2,7 @@ var React = require('react');
 
 import Head from "./components/header";
 import Nav from "./components/nav";
-import Footer from "./components/footer";
+import Footer2 from "./components/homefooter";
 
 class Login extends React.Component {
   render() {
@@ -42,7 +42,7 @@ class Login extends React.Component {
                     </div>
                   </div>
               </div>
-          <Footer />
+          <Footer2 />
         </body>
       </html>
     );

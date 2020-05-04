@@ -8,8 +8,16 @@ module.exports = (db) => {
 
 
    let homecontroller = (request, response) => {
+    let user_name = request.cookies['user_name'];
+
+        if (request.cookies['user_name'] !== undefined){
             response.render('home');
+
+       } else {
+            response.render('home2');
         };
+    };
+
 
 
 

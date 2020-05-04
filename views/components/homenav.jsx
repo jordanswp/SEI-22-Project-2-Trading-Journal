@@ -1,15 +1,15 @@
 import React from "react";
 
-class Nav extends React.Component {
+class Nav2 extends React.Component {
       render() {
             return (
-        <nav class="navbar" style={{background:'#2b3d4c'}}>
+        <nav class="navbar" style={{background:'transparent'}}>
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="/trades"><img src="/assets/logo.png" width="40" height="20" alt="MidasFX"/></a>
+
             </div>
     <ul class="nav navbar-nav">
-        <li class="active"><a style={{color:'#809eb4'}} href="/">Home</a></li>
+        <li class="active"><a style={{color:'#809eb4'}} href="/trades">Dashboard</a></li>
         <li class="dropdown">
             <a style={{color:'#809eb4'}} class="dropdown-toggle" data-toggle="dropdown" href="#">Useful Links
             <span class="caret"></span></a>
@@ -24,8 +24,8 @@ class Nav extends React.Component {
 
 
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      <li><a style={{color:'#dedee4'}} href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a style={{color:'#dedee4'}} href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
     </ul>
   </div>
 </nav>
@@ -33,4 +33,4 @@ class Nav extends React.Component {
       }
 }
 
-export default Nav;
+export default Nav2;
