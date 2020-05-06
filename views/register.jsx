@@ -30,7 +30,7 @@ class register extends React.Component {
 
                                 <div class="form-group has-feedback">
                                     <label class="control-label">Password</label>
-                                    <input className="form-control" name="password" placeholder="Password"/>
+                                    <input className="form-control" type="password" name="password" placeholder="Password"/>
                                     <i class="glyphicon glyphicon-lock form-control-feedback"></i>
                                 </div>
 
