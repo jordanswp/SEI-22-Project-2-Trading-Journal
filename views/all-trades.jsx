@@ -45,7 +45,6 @@ class AllTrades extends React.Component {
       <Head />
         <body style={{ background: '#f4f4f4'}}>
         <Nav />
-        <hr style={{borderStyle: 'inset', borderWidth: '1px', width:'125px', position:'absolute', left:'120px', top:'137px'}}></hr>
         <div className="container" style={{background: 'white', boxShadow: '0 0 0.5px grey', marginTop:'50px'}}>
           <h3 style={{fontFamily: 'arial', color:'#5a7183', marginBottom: '30px', borderBottom:'1px solid #e6e6e6', paddingBottom:'10px'}}>All trades</h3>
           <div>
