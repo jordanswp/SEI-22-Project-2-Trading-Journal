@@ -20,7 +20,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "engines" : {
-    "node" : "^13.10.1"
+  "engines": {
+    "node": "^13.10.1"
   }
 }

@@ -13,10 +13,10 @@ class register extends React.Component {
         <body style={{backgroundImage:`url('/assets/registerbg.jpg')`, backgroundRepeat:'no-repeat', backgroundSize:'cover' }}>
 
         <Nav3 />
-        <div className="container" style={{background: 'white' }}>
-                <div class="row">
-                    <div class="col-sm-4 col-md-offset-3" style={{backgroundColor:'white', boxShadow: '0 0 50px grey', position:'absolute', top:'200px'}}>
-                        <h1 style={{textAlign:'center'}}>Register for MidasFX</h1>
+        <div className="container" style={{background: 'transparent' }}>
+
+                    <div class="col-sm-4 col-md-offset-4" style={{backgroundColor:'white', boxShadow: '0 0 50px grey', marginTop: '150px'}}>
+                        <h1 style={{textAlign:'center'}}>Register</h1>
                         <div>
 
                         <form action="/register" method="post">
@@ -41,7 +41,7 @@ class register extends React.Component {
                         </form>
                         </div>
                 </div>
-            </div>
+
         </div>
             <Footer2 />
         </body>
